@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package fi.helsinki.jpaljakk.huffmancompressor;
 
 import java.util.ArrayList;
@@ -6,7 +11,7 @@ import java.util.List;
 /**
  *
  * @author juha
- * 
+ *
  * Canonical Huffman Code. Describe length of each symbols binary code
  */
 public class CanonicalCode {
@@ -15,15 +20,17 @@ public class CanonicalCode {
 
     /**
      * Constructor for CanonicalCode
+     *
      * @param codeLengths Lengths of Huffman codes
      */
     public CanonicalCode(int[] codeLengths) {
-        
-        this.codeLengths = codeLengths;        
+
+        this.codeLengths = codeLengths;
     }
-    
+
     /**
      * Constructor for CanonicalCode
+     *
      * @param tree Huffman binary code tree
      * @param symbolLimit Limit of symbols
      */
@@ -40,17 +47,18 @@ public class CanonicalCode {
         } else if (node.isLeaf()) {
             int symbol = ((Leaf) node).symbol;
             if (codeLengths[symbol] != 0) {
-                throw new AssertionError("Symbol has over one code"); 
+                throw new AssertionError("Symbol has over one code");
             }
             if (symbol >= codeLengths.length) {
                 throw new IllegalArgumentException("Symbol exceeds limit");
             }
             codeLengths[symbol] = depth;
-        } 
+        }
     }
 
     /**
      * Gives limit of symbols
+     *
      * @return Limit of symbols
      */
     public int getSymbolLimit() {
@@ -59,6 +67,7 @@ public class CanonicalCode {
 
     /**
      * Gives length of code of the given symbol
+     *
      * @param symbol Symbol which code length is wanted
      * @return Length of code of the given symbol
      */
@@ -71,18 +80,19 @@ public class CanonicalCode {
 
     /**
      * Builds and returns codetree from this canonical code
+     *
      * @return Codetree from this canonical code
      */
     public CodeTree toCodeTree() {
         List<Node> nodes = new ArrayList<Node>();
-        for (int i = maximum(codeLengths); i >= 1; i--) {  
+        for (int i = maximum(codeLengths); i >= 1; i--) {
             List<Node> newNodes = new ArrayList<Node>();
 
             for (int j = 0; j < codeLengths.length; j++) {
                 if (codeLengths[j] == i) {
                     newNodes.add(new Leaf(j));
                 }
-            }            
+            }
             for (int j = 0; j < nodes.size(); j += 2) {
                 newNodes.add(new InternalNode(nodes.get(j), nodes.get(j + 1)));
             }

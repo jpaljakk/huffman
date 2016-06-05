@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package fi.helsinki.jpaljakk.huffmancompressor;
 
 import java.io.BufferedInputStream;
@@ -12,13 +17,14 @@ import java.io.OutputStream;
 /**
  *
  * @author juha
- * 
+ *
  * Huffman Compressor encoder/decoder with console UI
  */
 public class HuffmanCompressor {
 
     /**
      * Main
+     *
      * @param args not used
      * @throws IOException
      */
@@ -30,6 +36,7 @@ public class HuffmanCompressor {
 
     /**
      * Compress file
+     *
      * @param inputFile File to compress
      * @param outputFile Compressed output file
      * @throws IOException
@@ -46,7 +53,7 @@ public class HuffmanCompressor {
         CodeTree code = freq.buildCodeTree();
         CanonicalCode canonCode = new CanonicalCode(code, 257);
         code = canonCode.toCodeTree();
-        
+
         InputStream in = new BufferedInputStream(new FileInputStream(inputFile));
         BitOutputStream out = new BitOutputStream(new BufferedOutputStream(new FileOutputStream(outputFile)));
         try {
@@ -65,6 +72,7 @@ public class HuffmanCompressor {
 
     /**
      * Decompress file
+     *
      * @param inputFile File to be decompressed
      * @param outputFile Decompressed output file
      * @throws IOException
@@ -108,7 +116,7 @@ public class HuffmanCompressor {
 
     private static void writeCode(BitOutputStream out, CanonicalCode canonCode) throws IOException {
         for (int i = 0; i < canonCode.getSymbolLimit(); i++) {
-            int val = canonCode.getCodeLength(i);            
+            int val = canonCode.getCodeLength(i);
             if (val >= 256) {
                 throw new RuntimeException("Code is too long");
             }

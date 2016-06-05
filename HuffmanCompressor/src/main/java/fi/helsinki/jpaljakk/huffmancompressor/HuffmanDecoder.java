@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package fi.helsinki.jpaljakk.huffmancompressor;
 
 import java.io.IOException;
@@ -5,8 +10,9 @@ import java.io.IOException;
 /**
  *
  * @author juha
- * 
- * HuffmanDecoder that reads from bit inputstream and decodes codes back to symbols
+ *
+ * HuffmanDecoder that reads from bit inputstream and decodes codes back to
+ * symbols
  */
 public class HuffmanDecoder {
 
@@ -16,15 +22,17 @@ public class HuffmanDecoder {
 
     /**
      * Constructor for Huffmandecoder
+     *
      * @param in Bitinputstream that decoder reads
      */
     public HuffmanDecoder(BitInputStream in) {
-       
+
         input = in;
     }
 
     /**
      * Reads and decodes next symbol
+     *
      * @return decoded symbol
      * @throws IOException
      */

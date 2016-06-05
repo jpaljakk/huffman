@@ -12,7 +12,7 @@ import java.util.Scanner;
 /**
  *
  * @author juha
- * 
+ *
  * Console User Interface for Huffman Compressor
  */
 public class HuffmanUI {
@@ -24,12 +24,10 @@ public class HuffmanUI {
             + "5. Print Huffman codes of file\n"
             + "X. Quit program or get back to this menu from submenus";
 
-    
     private Scanner reader = new Scanner(System.in);
 
     private boolean insideSubmenu = false;
 
-   
     public void mainMenu() throws IOException {
         System.out.println(userChoices);
         String choice = reader.nextLine();
@@ -52,7 +50,6 @@ public class HuffmanUI {
         }
     }
 
-    
     private void compress() throws IOException {
         insideSubmenu = true;
         File file = askInputFile("compress");
@@ -63,7 +60,6 @@ public class HuffmanUI {
         }
     }
 
-    
     private void compressWithDifferentOutput() throws IOException {
         insideSubmenu = true;
         File file = askInputFile("input for compress");
@@ -74,6 +70,8 @@ public class HuffmanUI {
             File output = new File(reader.nextLine());
             if (output.getName().equals("X")) {
                 comeBackOrExit();
+            } else if (output.exists()) {
+                System.out.println("\n\nOutput file already exists, cannot overwrite");
             } else {
                 HuffmanCompressor.compress(file, output);
             }
@@ -100,13 +98,14 @@ public class HuffmanUI {
             File output = new File(reader.nextLine());
             if (output.getName().equals("X")) {
                 comeBackOrExit();
+            } else if (output.exists()) {
+                System.out.println("\n\nOutput file already exists, cannot overwrite");
             } else {
                 HuffmanCompressor.decompress(file, output);
             }
         }
     }
 
-  
     private void printCodes() {
         insideSubmenu = true;
     }
@@ -127,7 +126,6 @@ public class HuffmanUI {
         return file;
     }
 
-   
     private void comeBackOrExit() throws IOException {
         if (insideSubmenu) {
             insideSubmenu = false;

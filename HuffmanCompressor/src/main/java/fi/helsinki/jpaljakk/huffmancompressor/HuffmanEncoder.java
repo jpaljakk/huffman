@@ -1,14 +1,18 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package fi.helsinki.jpaljakk.huffmancompressor;
 
 import java.io.IOException;
-import java.util.List;
 
 /**
  *
  * @author juha
- * 
+ *
  * HuffmanEncoder encodes and writes to output bitstream
- * 
+ *
  */
 public class HuffmanEncoder {
 
@@ -18,14 +22,16 @@ public class HuffmanEncoder {
 
     /**
      * Constructor for HuffmanEncoder
+     *
      * @param output BitOutputStream that encoder can write
      */
-    public HuffmanEncoder(BitOutputStream output) {        
+    public HuffmanEncoder(BitOutputStream output) {
         this.output = output;
     }
 
     /**
      * Encode and write symbols to output bitstream
+     *
      * @param symbol Symbol that is to be encoded to output bitstream
      * @throws IOException
      */

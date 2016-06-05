@@ -1,13 +1,17 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package fi.helsinki.jpaljakk.huffmancompressor;
 
 import java.io.IOException;
 import java.io.OutputStream;
 
-
 /**
  *
  * @author juha
- * 
+ *
  * A Steam for bits to be written to. Connects to other outputstream.
  */
 public class BitOutputStream {
@@ -18,10 +22,11 @@ public class BitOutputStream {
 
     /**
      * Constructor for BitOutputStream
+     *
      * @param out byte outputStream that bits are written
      */
     public BitOutputStream(OutputStream out) {
-        
+
         output = out;
         currentByte = 0;
         bitsInCurrentByte = 0;
@@ -29,6 +34,7 @@ public class BitOutputStream {
 
     /**
      * Write bit to stream
+     *
      * @param b integer, 0 or 1, to be written as bit.
      * @throws IOException
      */
@@ -44,9 +50,10 @@ public class BitOutputStream {
         }
     }
 
-   /**
+    /**
      * Close this and the underlying stream. And fill the last byte with zeros
      * if not full.
+     *
      * @throws IOException
      */
     public void close() throws IOException {

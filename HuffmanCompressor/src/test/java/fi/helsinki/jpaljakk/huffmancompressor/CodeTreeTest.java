@@ -5,7 +5,7 @@
  */
 package fi.helsinki.jpaljakk.huffmancompressor;
 
-import java.util.List;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

@@ -16,6 +16,7 @@ public class InternalNode implements Node {
 
     /**
      * Constructor for internal node
+     *
      * @param leftChild nodes left child node
      * @param rightChild nodes right child node
      */

@@ -8,10 +8,9 @@ package fi.helsinki.jpaljakk.huffmancompressor;
 /**
  *
  * @author juha
- * 
+ *
  */
 public class Leaf implements Node {
-
 
     public int symbol;
 
@@ -22,7 +21,6 @@ public class Leaf implements Node {
     public Leaf(int symbol) {
         this.symbol = symbol;
     }
-
 
     @Override
     public boolean isLeaf() {

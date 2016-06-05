@@ -1,13 +1,14 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package fi.helsinki.jpaljakk.huffmancompressor;
-
-import java.util.PriorityQueue;
-import java.util.Queue;
-
 
 /**
  *
  * @author juha
- * 
+ *
  * Table of symbol frequencies
  */
 public class FrequencyTable {
@@ -16,11 +17,12 @@ public class FrequencyTable {
 
     /**
      * Constructor for table of symbol frequencies
+     *
      * @param freqs Table of symbol frequencies
      */
     public FrequencyTable(int[] freqs) {
-        
-        if (freqs.length < 2||freqs == null) {
+
+        if (freqs.length < 2 || freqs == null) {
             throw new IllegalArgumentException("Frequencies null or too low");
         }
         frequencies = freqs;
@@ -28,6 +30,7 @@ public class FrequencyTable {
 
     /**
      * Gives limit of symbols
+     *
      * @return Number of symbols
      */
     public int getSymbolLimit() {
@@ -36,6 +39,7 @@ public class FrequencyTable {
 
     /**
      * Gives frequency of the given symbol
+     *
      * @param symbol Symbol which frequency is asked
      * @return Frequency of the given symbol
      */
@@ -48,6 +52,7 @@ public class FrequencyTable {
 
     /**
      * Sets the frequency of the given symbol
+     *
      * @param symbol Symbol which frequency is set
      * @param freq Frequency of the given symbol
      */
@@ -60,6 +65,7 @@ public class FrequencyTable {
 
     /**
      * Increments frequency of the given symbol by one
+     *
      * @param symbol Symbol which frequency is incremented
      */
     public void increment(int symbol) {
@@ -69,13 +75,14 @@ public class FrequencyTable {
         frequencies[symbol]++;
     }
 
-     /**
+    /**
      * Builds and returns optimal code tree for these frequencies
+     *
      * @return Build code tree
      */
     public CodeTree buildCodeTree() {
         // Frequency tie is broken by which tree contains the lowest symbol. 
-        Queue<NodeWithFrequency> pqueue = new PriorityQueue<NodeWithFrequency>();
+        PriorityQueue<NodeWithFrequency> pqueue = new PriorityQueue<NodeWithFrequency>();
 
         for (int i = 0; i < frequencies.length; i++) {
             if (frequencies[i] > 0) {

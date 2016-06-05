@@ -1,9 +1,13 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package fi.helsinki.jpaljakk.huffmancompressor;
 
 import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
-
 
 /**
  *
@@ -12,14 +16,15 @@ import java.io.InputStream;
  * Input Stream of bits from byte stream
  */
 public class BitInputStream {
-    
+
     private InputStream input;
     private int nextBits;
     private int bitsRemaining;
     private boolean endOfStream;
-  
+
     /**
      * Constructor for BitInputStream
+     *
      * @param in input stream to connect
      */
     public BitInputStream(InputStream in) {
@@ -47,8 +52,9 @@ public class BitInputStream {
         return (nextBits >>> bitsRemaining) & 1;
     }
 
-     /**
+    /**
      * Read next byte from the stream. Throws EOFException at the end of stream
+     *
      * @return int 1 or 0 represeting next bit
      * @throws IOException
      */
@@ -60,9 +66,10 @@ public class BitInputStream {
             throw new EOFException("End of stream");
         }
     }
-   
+
     /**
      * Close this and the underlying stream
+     *
      * @throws IOException
      */
     public void close() throws IOException {
