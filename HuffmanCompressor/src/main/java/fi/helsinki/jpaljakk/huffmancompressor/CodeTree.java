@@ -5,7 +5,6 @@
  */
 package fi.helsinki.jpaljakk.huffmancompressor;
 
-
 /**
  *
  * @author juha

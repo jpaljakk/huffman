@@ -6,6 +6,7 @@
 package fi.helsinki.jpaljakk.huffmancompressor;
 
 import java.lang.reflect.Array;
+import java.lang.reflect.ParameterizedType;
 import java.util.Iterator;
 
 /**
@@ -16,28 +17,34 @@ import java.util.Iterator;
  *
  * @param <T> Type of the objects in this list
  */
-public class List<T> implements Iterable<T>, Iterator<T> {
+public class List<T> {//implements Iterator<T>,Iterable<T>{
 
     private int size = 0;
     private int maxSize = 10;
     private T[] list;
+    protected Object[] lista;
+    private int iteratorPointer;
+    private Class<T> type;
+    private boolean nextCalled = false;
 
     /**
-     * Constructor with size parameter
+     * Constructor that has other list as parameter
      *
-     * @param <Integer>
-     * @param initialSize size of the constructed list
+     * @param parameter List that is used to construct new List
      */
-    public <Integer> List(Integer initialSize) {
+    public List(List<T> parameter) {
 
-        Number n = (Number) initialSize;
-        maxSize = n.intValue();
+        for (int x = 0; x < parameter.size(); x++) {
+            add(parameter.get(x));
+        }
     }
 
     /**
      * Constructor without parameters
      */
     public List() {
+//       
+
     }
 
     /**
@@ -46,11 +53,14 @@ public class List<T> implements Iterable<T>, Iterator<T> {
      * @param element Object to be added to this list
      */
     public void add(T element) {
+
         if (size == 0) {
-            list = (T[]) Array.newInstance(element.getClass(), maxSize);
+            list = (T[]) new Object[maxSize];
+
         } else if (size == maxSize) {
             maxSize *= 2;
-            T[] tmp = (T[]) Array.newInstance(element.getClass(), maxSize);
+
+            T[] tmp = (T[]) new Object[maxSize];
             for (int x = 0; x < list.length; x++) {
                 tmp[x] = list[x];
             }
@@ -82,6 +92,7 @@ public class List<T> implements Iterable<T>, Iterator<T> {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
         }
+
         return list[index];
     }
 
@@ -109,18 +120,43 @@ public class List<T> implements Iterable<T>, Iterator<T> {
         }
     }
 
-    @Override
-    public Iterator<T> iterator() {
-        return this;
-    }
-
-    @Override
-    public boolean hasNext() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public T next() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+//    @Override
+//    public Iterator<T> iterator() {
+//        this.iteratorPointer=0;
+//        List<T> ll=new List<T>();
+//        ll.iteratorPointer=this.iteratorPointer;
+//        ll.lista=this.lista;
+//        ll.maxSize=this.maxSize;
+//        ll.size=this.size;
+//        ll.nextCalled=this.nextCalled;  
+//        
+//        return ll;
+//    }
+//
+//    @Override
+//    public void remove(){
+//        if(this.iteratorPointer>0 && nextCalled){
+//            nextCalled=false;
+//            remove(--iteratorPointer);
+//        }            
+//    }
+//    
+//    @Override
+//    public boolean hasNext() {
+//        
+//        if(this.iteratorPointer==(this.size)){
+//            return false;
+//        }
+//        return true;
+//    }
+//
+//    @Override
+//    public T next() {
+//        
+//        if(this.hasNext()){
+//            nextCalled=true;
+//            return (T)lista[this.iteratorPointer++];
+//        }             
+//        return null;
+//    }
 }

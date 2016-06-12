@@ -43,14 +43,14 @@ public class CodeTreeTest {
      */
     @Test
     public void testGetCode() {
-        System.out.println("getCode");
-        int symbol = 0;
-        CodeTree instance = null;
-        List<Integer> expResult = null;
-        List<Integer> result = instance.getCode(symbol);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        System.out.println("getCode");
+//        int symbol = 0;
+//        CodeTree instance = null;
+//        List<Integer> expResult = null;
+//        List<Integer> result = instance.getCode(symbol);
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
     }
     
 }

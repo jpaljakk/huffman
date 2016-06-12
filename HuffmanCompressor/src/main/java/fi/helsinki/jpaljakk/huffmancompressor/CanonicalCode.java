@@ -5,9 +5,6 @@
  */
 package fi.helsinki.jpaljakk.huffmancompressor;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  *
  * @author juha
@@ -84,9 +81,9 @@ public class CanonicalCode {
      * @return Codetree from this canonical code
      */
     public CodeTree toCodeTree() {
-        List<Node> nodes = new ArrayList<Node>();
+        List<Node> nodes = new List<Node>();
         for (int i = maximum(codeLengths); i >= 1; i--) {
-            List<Node> newNodes = new ArrayList<Node>();
+            List<Node> newNodes = new List<Node>();
 
             for (int j = 0; j < codeLengths.length; j++) {
                 if (codeLengths[j] == i) {

@@ -40,8 +40,8 @@ public class HuffmanEncoder {
             throw new NullPointerException("Codetree is null");
         }
         List<Integer> bits = codeTree.getCode(symbol);
-        for (int b : bits) {
-            output.write(b);
+        for (int x = 0; x < bits.size(); x++) {
+            output.write(bits.get(x));
         }
     }
 }

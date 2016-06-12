@@ -37,6 +37,7 @@ public class HuffmanDecoder {
      * @throws IOException
      */
     public int read() throws IOException {
+
         if (codeTree == null) {
             throw new NullPointerException("Codetree is null");
         }
@@ -62,5 +63,4 @@ public class HuffmanDecoder {
             }
         }
     }
-
 }
