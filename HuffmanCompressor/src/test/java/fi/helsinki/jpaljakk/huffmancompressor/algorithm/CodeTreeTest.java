@@ -3,37 +3,39 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fi.helsinki.jpaljakk.huffmancompressor;
+package fi.helsinki.jpaljakk.huffmancompressor.algorithm;
 
 
+import fi.helsinki.jpaljakk.huffmancompressor.structures.InternalNode;
+import fi.helsinki.jpaljakk.huffmancompressor.structures.Leaf;
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
  * @author juha
  */
 public class CodeTreeTest {
-    
-    public CodeTreeTest() {
-    }
-    
+
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+    public CodeTreeTest() {
+    }
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -43,14 +45,13 @@ public class CodeTreeTest {
      */
     @Test
     public void testGetCode() {
-//        System.out.println("getCode");
-//        int symbol = 0;
-//        CodeTree instance = null;
-//        List<Integer> expResult = null;
-//        List<Integer> result = instance.getCode(symbol);
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+
+        InternalNode node = new InternalNode(new Leaf(1), new Leaf(2));
+        CodeTree tree = new CodeTree(node, 256);
+        int one = tree.getCode(1).get(0);
+        int two = tree.getCode(2).get(0);
+        assertEquals( 0, one);
+        assertEquals( 1, two);
     }
-    
+
 }

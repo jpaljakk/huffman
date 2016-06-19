@@ -3,36 +3,38 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fi.helsinki.jpaljakk.huffmancompressor;
+package fi.helsinki.jpaljakk.huffmancompressor.streams;
 
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
  * @author juha
  */
 public class BitOutputStreamTest {
-    
-    public BitOutputStreamTest() {
-    }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
+    public BitOutputStreamTest() {
+    }
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -42,12 +44,15 @@ public class BitOutputStreamTest {
      */
     @Test
     public void testWrite() throws Exception {
-        System.out.println("write");
-        int b = 0;
-        BitOutputStream instance = null;
-        instance.write(b);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        BitOutputStream instance = new BitOutputStream(out);
+        for (int x = 0; x < 16; x++) {
+            instance.write(x % 2);
+        }
+        assertEquals(out.toString(), "UU");
+        out.close();
+        instance.close();
     }
 
     /**
@@ -55,11 +60,10 @@ public class BitOutputStreamTest {
      */
     @Test
     public void testClose() throws Exception {
-        System.out.println("close");
-        BitOutputStream instance = null;
+
+        OutputStream out = new ByteArrayOutputStream();
+        BitOutputStream instance = new BitOutputStream(out);
         instance.close();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
-    
+
 }

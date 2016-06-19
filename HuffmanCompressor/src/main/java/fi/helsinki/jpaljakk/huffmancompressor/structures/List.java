@@ -3,11 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fi.helsinki.jpaljakk.huffmancompressor;
-
-import java.lang.reflect.Array;
-import java.lang.reflect.ParameterizedType;
-import java.util.Iterator;
+package fi.helsinki.jpaljakk.huffmancompressor.structures;
 
 /**
  *
@@ -25,7 +21,6 @@ public class List<T> {//implements Iterator<T>,Iterable<T>{
     protected Object[] lista;
     private int iteratorPointer;
     private Class<T> type;
-    private boolean nextCalled = false;
 
     /**
      * Constructor that has other list as parameter
@@ -43,7 +38,7 @@ public class List<T> {//implements Iterator<T>,Iterable<T>{
      * Constructor without parameters
      */
     public List() {
-//       
+//
 
     }
 
@@ -128,8 +123,8 @@ public class List<T> {//implements Iterator<T>,Iterable<T>{
 //        ll.lista=this.lista;
 //        ll.maxSize=this.maxSize;
 //        ll.size=this.size;
-//        ll.nextCalled=this.nextCalled;  
-//        
+//        ll.nextCalled=this.nextCalled;
+//
 //        return ll;
 //    }
 //
@@ -138,12 +133,12 @@ public class List<T> {//implements Iterator<T>,Iterable<T>{
 //        if(this.iteratorPointer>0 && nextCalled){
 //            nextCalled=false;
 //            remove(--iteratorPointer);
-//        }            
+//        }
 //    }
-//    
+//
 //    @Override
 //    public boolean hasNext() {
-//        
+//
 //        if(this.iteratorPointer==(this.size)){
 //            return false;
 //        }
@@ -152,11 +147,11 @@ public class List<T> {//implements Iterator<T>,Iterable<T>{
 //
 //    @Override
 //    public T next() {
-//        
+//
 //        if(this.hasNext()){
 //            nextCalled=true;
 //            return (T)lista[this.iteratorPointer++];
-//        }             
+//        }
 //        return null;
 //    }
 }

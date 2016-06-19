@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fi.helsinki.jpaljakk.huffmancompressor;
+package fi.helsinki.jpaljakk.huffmancompressor.structures;
 
 import java.lang.reflect.Array;
 
@@ -16,9 +16,10 @@ import java.lang.reflect.Array;
  */
 public class PriorityQueue<T extends Comparable<T>> {
 
+    private static final int FRONT = 1;
+
     private T[] Heap;
     private int size = 0;
-    private static final int FRONT = 1;
 
     /**
      * Default constructor for PriorityQueue
@@ -101,7 +102,7 @@ public class PriorityQueue<T extends Comparable<T>> {
     public void add(T element) {
 
         if (size == 0) {
-            Heap = (T[]) Array.newInstance(element.getClass(), 256);
+            Heap = (T[]) Array.newInstance(element.getClass(), 258);
         }
         Heap[++size] = element;
         int current = size;

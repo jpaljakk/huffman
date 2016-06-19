@@ -3,7 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fi.helsinki.jpaljakk.huffmancompressor;
+package fi.helsinki.jpaljakk.huffmancompressor.algorithm;
+
+import fi.helsinki.jpaljakk.huffmancompressor.structures.InternalNode;
+import fi.helsinki.jpaljakk.huffmancompressor.structures.Leaf;
+import fi.helsinki.jpaljakk.huffmancompressor.structures.List;
+import fi.helsinki.jpaljakk.huffmancompressor.structures.Node;
 
 /**
  *
@@ -12,6 +17,14 @@ package fi.helsinki.jpaljakk.huffmancompressor;
  * Canonical Huffman Code. Describe length of each symbols binary code
  */
 public class CanonicalCode {
+
+    private static int maximum(int[] array) {
+        int result = array[0];
+        for (int x : array) {
+            result = Math.max(x, result);
+        }
+        return result;
+    }
 
     private int[] codeLengths;
 
@@ -81,9 +94,9 @@ public class CanonicalCode {
      * @return Codetree from this canonical code
      */
     public CodeTree toCodeTree() {
-        List<Node> nodes = new List<Node>();
+        List<Node> nodes = new List<>();
         for (int i = maximum(codeLengths); i >= 1; i--) {
-            List<Node> newNodes = new List<Node>();
+            List<Node> newNodes = new List<>();
 
             for (int j = 0; j < codeLengths.length; j++) {
                 if (codeLengths[j] == i) {
@@ -104,11 +117,4 @@ public class CanonicalCode {
         return new CodeTree(new InternalNode(nodes.get(0), nodes.get(1)), codeLengths.length);
     }
 
-    private static int maximum(int[] array) {
-        int result = array[0];
-        for (int x : array) {
-            result = Math.max(x, result);
-        }
-        return result;
-    }
 }

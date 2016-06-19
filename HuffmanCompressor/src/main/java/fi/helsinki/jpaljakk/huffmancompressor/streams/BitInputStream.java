@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fi.helsinki.jpaljakk.huffmancompressor;
+package fi.helsinki.jpaljakk.huffmancompressor.streams;
 
 import java.io.EOFException;
 import java.io.IOException;

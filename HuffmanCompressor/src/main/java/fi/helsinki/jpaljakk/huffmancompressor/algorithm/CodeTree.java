@@ -3,7 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fi.helsinki.jpaljakk.huffmancompressor;
+package fi.helsinki.jpaljakk.huffmancompressor.algorithm;
+
+import fi.helsinki.jpaljakk.huffmancompressor.structures.InternalNode;
+import fi.helsinki.jpaljakk.huffmancompressor.structures.Leaf;
+import fi.helsinki.jpaljakk.huffmancompressor.structures.List;
+import fi.helsinki.jpaljakk.huffmancompressor.structures.Node;
 
 /**
  *

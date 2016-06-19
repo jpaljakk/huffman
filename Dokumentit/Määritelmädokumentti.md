@@ -1,4 +1,4 @@
-Määritelmädokumentti
+Määritelmädokumentti :
 
 
 Tavoitteena ohjelmoida Huffman tiedonpakkaaja/tiedonpurkaja. Ohjelmalle voidaan
@@ -19,5 +19,5 @@ Käytetyt tietotyypit ovat binääripuu huffman koodien muodostamiseksi.
 Jono/prioriteettijono sekä lista/arraylist. Näitä tarvitaan huffman koodauksen
 toteuttamiseen. 
 
-Algoritmina on huffman koodaus ja pikajärjestäminen.
+Algoritmina on huffman koodaus ja minimikeko prioriteettijonon toteutuksena.
 

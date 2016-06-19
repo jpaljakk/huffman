@@ -3,7 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fi.helsinki.jpaljakk.huffmancompressor;
+package fi.helsinki.jpaljakk.huffmancompressor.algorithm;
+
+import fi.helsinki.jpaljakk.huffmancompressor.structures.InternalNode;
+import fi.helsinki.jpaljakk.huffmancompressor.structures.Leaf;
+import fi.helsinki.jpaljakk.huffmancompressor.structures.Node;
+import fi.helsinki.jpaljakk.huffmancompressor.structures.PriorityQueue;
 
 /**
  *
@@ -81,7 +86,7 @@ public class FrequencyTable {
      * @return Build code tree
      */
     public CodeTree buildCodeTree() {
-        // Frequency tie is broken by which tree contains the lowest symbol. 
+        // Frequency tie is broken by which tree contains the lowest symbol.
         PriorityQueue<NodeWithFrequency> pqueue = new PriorityQueue<NodeWithFrequency>();
 
         for (int i = 0; i < frequencies.length; i++) {

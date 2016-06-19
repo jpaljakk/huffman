@@ -5,6 +5,8 @@
  */
 package fi.helsinki.jpaljakk.huffmancompressor;
 
+import fi.helsinki.jpaljakk.huffmancompressor.algorithm.HuffmanDecoder;
+import fi.helsinki.jpaljakk.huffmancompressor.algorithm.HuffmanEncoder;
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
@@ -21,7 +23,7 @@ public class HuffmanUI {
             + "2. Compress file to different output file\n"
             + "3. Decompress file\n"
             + "4. Decompress to different output file\n"
-            + "5. Print Huffman codes of file\n"
+            + "5. Performance Test - Encode file and Decode it back and count the time\n"
             + "X. Quit program or get back to this menu from submenus";
 
     private Scanner reader = new Scanner(System.in);
@@ -40,7 +42,7 @@ public class HuffmanUI {
         } else if (choice.equals("4")) {
             decompressWithDifferentOutput();
         } else if (choice.equals("5")) {
-            printCodes();
+            performanceTest();
         } else if (choice.equals("X")) {
             comeBackOrExit();
         } else {
@@ -56,7 +58,7 @@ public class HuffmanUI {
         if (file == null) {
             comeBackOrExit();
         } else {
-            HuffmanCompressor.compress(file, file);
+            HuffmanEncoder.compress(file, file);
         }
     }
 
@@ -73,7 +75,7 @@ public class HuffmanUI {
             } else if (output.exists()) {
                 System.out.println("\n\nOutput file already exists, cannot overwrite");
             } else {
-                HuffmanCompressor.compress(file, output);
+                HuffmanEncoder.compress(file, output);
             }
         }
     }
@@ -84,7 +86,7 @@ public class HuffmanUI {
         if (file == null) {
             comeBackOrExit();
         } else {
-            HuffmanCompressor.decompress(file, file);
+            HuffmanDecoder.decompress(file, file);
         }
     }
 
@@ -101,13 +103,37 @@ public class HuffmanUI {
             } else if (output.exists()) {
                 System.out.println("\n\nOutput file already exists, cannot overwrite");
             } else {
-                HuffmanCompressor.decompress(file, output);
+                HuffmanDecoder.decompress(file, output);
             }
         }
     }
 
-    private void printCodes() {
+    private void performanceTest() throws IOException {
         insideSubmenu = true;
+        File file = askInputFile("use for testing performance");
+        if (file == null) {
+            comeBackOrExit();
+        } else {
+            runTest(file);
+        }
+    }
+
+    private void runTest(File file) throws IOException {
+        System.out.println("\n\n\n");
+        File temp = new File("tmp.tmp");
+        long encoderStartTime = System.currentTimeMillis();
+        HuffmanEncoder.compress(file, temp);
+        long encoderEndTime = System.currentTimeMillis();
+        long decoderStartTime = System.currentTimeMillis();
+        HuffmanDecoder.decompress(temp, file);
+        long decoderEndTime = System.currentTimeMillis();
+        temp.delete();
+        long encoderTime = encoderEndTime - encoderStartTime;
+        long decoderTime = decoderEndTime - decoderStartTime;
+        System.out.println("Encoding took: " + encoderTime + "ms.");
+        System.out.println("File size " + file.length() + " bytes  -  " + (file.length() / encoderTime) + " bytes per ms");
+        System.out.println("Decoding took: " + decoderTime + "ms.");
+        System.out.println("File size " + file.length() + " bytes  -  " + (file.length() / decoderTime) + " bytes per ms");
     }
 
     private File askInputFile(String postFix) {

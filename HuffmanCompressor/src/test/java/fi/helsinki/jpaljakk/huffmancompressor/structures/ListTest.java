@@ -3,38 +3,37 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fi.helsinki.jpaljakk.huffmancompressor;
+package fi.helsinki.jpaljakk.huffmancompressor.structures;
 
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
  * @author juha
  */
 public class ListTest {
-    
-    
-    public ListTest() {
-    }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
+    public ListTest() {
+    }
+
     @Before
     public void setUp() {
-        
+
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -44,16 +43,16 @@ public class ListTest {
      */
     @Test
     public void testAdd() {
-       
+
         List<Integer> instance = new List();
-        int result1=instance.size();
+        int result1 = instance.size();
         instance.add(5);
-        int result2=instance.size();
-        int result3=instance.get(0);
-        assertEquals(0,result1);
-        assertEquals(1,result2);
-        assertEquals(5,result3);
-        
+        int result2 = instance.size();
+        int result3 = instance.get(0);
+        assertEquals(0, result1);
+        assertEquals(1, result2);
+        assertEquals(5, result3);
+
     }
 
     /**
@@ -65,8 +64,8 @@ public class ListTest {
         List<Integer> instance = new List();
         instance.add(5);
         instance.set(0, 6);
-        int result=instance.get(0);
-        instance.set(6, result);
+        int result = instance.get(0);
+        assertEquals(6, result);
 
     }
 
@@ -87,7 +86,7 @@ public class ListTest {
      */
     @Test
     public void testSize() {
-        
+
         List<Integer> instance = new List();
         int expResult = 0;
         int result = instance.size();
@@ -106,13 +105,13 @@ public class ListTest {
         int index = 0;
         List<Integer> instance = new List();
         instance.add(1);
-        instance.add(2);        
-        int result1=instance.get(0);
-        int size=instance.size();
+        instance.add(2);
+        int result1 = instance.get(0);
+        int size = instance.size();
         instance.remove(0);
-        int result2=instance.get(0);
-        assertEquals(size,instance.size()+1);
-        assertEquals(1+2,result1+result2);
+        int result2 = instance.get(0);
+        assertEquals(size, instance.size() + 1);
+        assertEquals(1 + 2, result1 + result2);
     }
-    
+
 }
