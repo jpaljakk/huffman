@@ -25,6 +25,20 @@ import java.io.OutputStream;
  * symbols
  */
 public class HuffmanDecoder {
+    
+    private BitInputStream input;
+
+    public CodeTree codeTree;
+
+    /**
+     * Constructor for HuffmanDecoder
+     *
+     * @param in Bitinputstream that decoder reads
+     */
+    public HuffmanDecoder(BitInputStream in) {
+
+        input = in;
+    }
 
     private static CanonicalCode readCode(BitInputStream in) throws IOException {
         int[] codeLengths = new int[257];
@@ -75,20 +89,6 @@ public class HuffmanDecoder {
             }
             out.write(symbol);
         }
-    }
-
-    private BitInputStream input;
-
-    public CodeTree codeTree;
-
-    /**
-     * Constructor for Huffmandecoder
-     *
-     * @param in Bitinputstream that decoder reads
-     */
-    public HuffmanDecoder(BitInputStream in) {
-
-        input = in;
     }
 
     /**

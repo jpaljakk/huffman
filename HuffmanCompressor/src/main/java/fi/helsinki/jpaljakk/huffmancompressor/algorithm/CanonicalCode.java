@@ -14,7 +14,7 @@ import fi.helsinki.jpaljakk.huffmancompressor.structures.Node;
  *
  * @author juha
  *
- * Canonical Huffman Code. Describe length of each symbols binary code
+ * CanonicalCode that describes length of each symbols binary code
  */
 public class CanonicalCode {
 
@@ -41,7 +41,7 @@ public class CanonicalCode {
     /**
      * Constructor for CanonicalCode
      *
-     * @param tree Huffman binary code tree
+     * @param tree Huffman code tree
      * @param symbolLimit Limit of symbols
      */
     public CanonicalCode(CodeTree tree, int symbolLimit) {
@@ -67,7 +67,7 @@ public class CanonicalCode {
     }
 
     /**
-     * Gives limit of symbols
+     * Gives length of codeLength table
      *
      * @return Limit of symbols
      */
@@ -78,8 +78,8 @@ public class CanonicalCode {
     /**
      * Gives length of code of the given symbol
      *
-     * @param symbol Symbol which code length is wanted
-     * @return Length of code of the given symbol
+     * @param symbol Symbol which code length is asked
+     * @return Length of binary code of the given symbol
      */
     public int getCodeLength(int symbol) {
         if (symbol < 0 || symbol >= codeLengths.length) {
@@ -89,9 +89,9 @@ public class CanonicalCode {
     }
 
     /**
-     * Builds and returns codetree from this canonical code
+     * Builds and returns code tree from this canonical code
      *
-     * @return Codetree from this canonical code
+     * @return Code tree from this canonical code
      */
     public CodeTree toCodeTree() {
         List<Node> nodes = new List<>();
@@ -116,5 +116,4 @@ public class CanonicalCode {
         }
         return new CodeTree(new InternalNode(nodes.get(0), nodes.get(1)), codeLengths.length);
     }
-
 }

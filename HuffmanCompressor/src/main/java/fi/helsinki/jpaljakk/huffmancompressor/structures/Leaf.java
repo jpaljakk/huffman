@@ -15,7 +15,8 @@ public class Leaf implements Node {
     public int symbol;
 
     /**
-     *
+     * Constructor for leaf
+     * 
      * @param symbol Symbol that this leaf holds
      */
     public Leaf(int symbol) {

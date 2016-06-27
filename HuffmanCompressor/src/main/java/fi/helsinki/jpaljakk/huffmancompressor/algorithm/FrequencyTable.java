@@ -34,7 +34,7 @@ public class FrequencyTable {
     }
 
     /**
-     * Gives limit of symbols
+     * Gives length of frequency table
      *
      * @return Number of symbols
      */
@@ -95,7 +95,7 @@ public class FrequencyTable {
             }
         }
 
-        // Pad with zero-frequency symbols until queue has at least 2 items
+        // Pad with zero-frequency symbols if queue has under 2 items
         for (int i = 0; i < frequencies.length && pqueue.size() < 2; i++) {
             if (i >= frequencies.length || frequencies[i] == 0) {
                 pqueue.add(new NodeWithFrequency(new Leaf(i), i, 0));
@@ -105,7 +105,7 @@ public class FrequencyTable {
             throw new AssertionError();
         }
 
-        // Repeatedly tie together two nodes with the lowest frequency
+        // Remove from queue and tie together two nodes with the lowest frequency
         while (pqueue.size() > 1) {
             NodeWithFrequency nf1 = pqueue.remove();
             NodeWithFrequency nf2 = pqueue.remove();
@@ -115,7 +115,6 @@ public class FrequencyTable {
                     nf1.frequency + nf2.frequency));
         }
 
-        // Return the remaining node
         return new CodeTree((InternalNode) pqueue.remove().node, frequencies.length);
     }
 

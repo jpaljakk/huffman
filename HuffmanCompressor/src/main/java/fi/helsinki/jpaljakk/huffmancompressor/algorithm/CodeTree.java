@@ -22,10 +22,10 @@ public class CodeTree {
     private List<List<Integer>> codes;
 
     /**
-     * Codetree that represents binary codes of symbols
+     * Codetree that represents optimal binary codes of symbols
      *
-     * @param root Rootnode of binary tree
-     * @param symbolLimit Maximum numbers of symbols
+     * @param root Root node of binary tree
+     * @param symbolLimit Maximum number of symbols
      */
     public CodeTree(InternalNode root, int symbolLimit) {
 
@@ -36,7 +36,6 @@ public class CodeTree {
             codes.add(null);
         }
         buildCodeList(root, new List<Integer>());
-
     }
 
     private void buildCodeList(Node node, List<Integer> prefix) {
@@ -58,9 +57,9 @@ public class CodeTree {
     }
 
     /**
-     * Gives binary code that represents symbol
+     * Gives binary code that represents the given symbol
      *
-     * @param symbol Number of the symbol
+     * @param symbol Symbol which code is asked
      * @return List of integers that represents binary code
      */
     public List<Integer> getCode(int symbol) {

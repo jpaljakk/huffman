@@ -14,7 +14,7 @@ public interface Node {
     /**
      * Tells if node is leaf or internal node
      *
-     * @return if node is leaf or internal node
+     * @return true if node is leaf or false if internal node
      */
     public boolean isLeaf();
 }

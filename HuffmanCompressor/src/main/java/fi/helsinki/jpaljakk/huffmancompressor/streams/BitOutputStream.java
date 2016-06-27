@@ -23,7 +23,7 @@ public class BitOutputStream {
     /**
      * Constructor for BitOutputStream
      *
-     * @param out byte outputStream that bits are written
+     * @param out outputStream that bits are written to
      */
     public BitOutputStream(OutputStream out) {
 

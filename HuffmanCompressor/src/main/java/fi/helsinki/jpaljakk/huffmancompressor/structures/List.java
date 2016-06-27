@@ -13,14 +13,13 @@ package fi.helsinki.jpaljakk.huffmancompressor.structures;
  *
  * @param <T> Type of the objects in this list
  */
-public class List<T> {//implements Iterator<T>,Iterable<T>{
+public class List<T> {
 
     private int size = 0;
     private int maxSize = 10;
     private T[] list;
     protected Object[] lista;
-    private int iteratorPointer;
-    private Class<T> type;
+
 
     /**
      * Constructor that has other list as parameter
@@ -79,9 +78,10 @@ public class List<T> {//implements Iterator<T>,Iterable<T>{
     }
 
     /**
-     *
-     * @param index
-     * @return
+     *  Get object from specified location
+     * 
+     * @param index location of the object received
+     * @return Object from index location
      */
     public T get(int index) {
         if (index < 0 || index >= size) {
@@ -103,7 +103,7 @@ public class List<T> {//implements Iterator<T>,Iterable<T>{
     /**
      * Remove item from list
      *
-     * @param index index number thats going to be removed
+     * @param index index number thats going to be removed from the list
      */
     public void remove(int index) {
         if (index < 0 || index >= size) {
@@ -114,44 +114,4 @@ public class List<T> {//implements Iterator<T>,Iterable<T>{
             list[x] = list[x + 1];
         }
     }
-
-//    @Override
-//    public Iterator<T> iterator() {
-//        this.iteratorPointer=0;
-//        List<T> ll=new List<T>();
-//        ll.iteratorPointer=this.iteratorPointer;
-//        ll.lista=this.lista;
-//        ll.maxSize=this.maxSize;
-//        ll.size=this.size;
-//        ll.nextCalled=this.nextCalled;
-//
-//        return ll;
-//    }
-//
-//    @Override
-//    public void remove(){
-//        if(this.iteratorPointer>0 && nextCalled){
-//            nextCalled=false;
-//            remove(--iteratorPointer);
-//        }
-//    }
-//
-//    @Override
-//    public boolean hasNext() {
-//
-//        if(this.iteratorPointer==(this.size)){
-//            return false;
-//        }
-//        return true;
-//    }
-//
-//    @Override
-//    public T next() {
-//
-//        if(this.hasNext()){
-//            nextCalled=true;
-//            return (T)lista[this.iteratorPointer++];
-//        }
-//        return null;
-//    }
 }

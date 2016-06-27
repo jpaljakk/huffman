@@ -13,7 +13,7 @@ import java.io.InputStream;
  *
  * @author juha
  *
- * Input Stream of bits from byte stream
+ * Input Stream of bits from another input stream
  */
 public class BitInputStream {
 
@@ -53,9 +53,9 @@ public class BitInputStream {
     }
 
     /**
-     * Read next byte from the stream. Throws EOFException at the end of stream
+     * Read next bit from the stream. Throws EOFException at the end of stream
      *
-     * @return int 1 or 0 represeting next bit
+     * @return integer, 1 or 0, represeting next bit
      * @throws IOException
      */
     public int readNoEof() throws IOException {

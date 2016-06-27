@@ -19,9 +19,8 @@ public class HuffmanCompressor {
      * Main
      *
      * @param args not used
-     * @throws IOException
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
         HuffmanUI ui = new HuffmanUI();
         ui.mainMenu();

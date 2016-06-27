@@ -24,10 +24,23 @@ import java.io.InputStream;
  */
 public class HuffmanEncoder {
 
+    private BitOutputStream output;
+
+    public CodeTree codeTree;
+
+    /**
+     * Constructor for HuffmanEncoder
+     *
+     * @param output BitOutputStream that encoder can write to
+     */
+    public HuffmanEncoder(BitOutputStream output) {
+        this.output = output;
+    }
+    
     /**
      * Compress file
      *
-     * @param inputFile File to compress
+     * @param inputFile File to be compress
      * @param outputFile Compressed output file
      * @throws IOException
      */
@@ -97,21 +110,8 @@ public class HuffmanEncoder {
         }
     }
 
-    private BitOutputStream output;
-
-    public CodeTree codeTree;
-
     /**
-     * Constructor for HuffmanEncoder
-     *
-     * @param output BitOutputStream that encoder can write
-     */
-    public HuffmanEncoder(BitOutputStream output) {
-        this.output = output;
-    }
-
-    /**
-     * Encode and write symbols to output bitstream
+     * Encode and write symbols to bit output stream
      *
      * @param symbol Symbol that is to be encoded to output bitstream
      * @throws IOException
